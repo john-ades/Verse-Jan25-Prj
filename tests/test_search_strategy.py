@@ -1,7 +1,6 @@
-import pytest
 from unittest.mock import Mock
-from strategies.search_strategy import SearchIngestionStrategy
-from models import Artist
+from verse_jan25_prj.strategies.search_strategy import SearchIngestionStrategy
+from verse_jan25_prj.models import Artist
 
 
 def test_search_strategy_runs_correctly():

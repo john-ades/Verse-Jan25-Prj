@@ -1,11 +1,11 @@
 import pytest
 from unittest.mock import Mock, patch
-from auth_manager import SpotifyAuthManager
+from verse_jan25_prj.auth_manager import SpotifyAuthManager
 
 
 @pytest.fixture
 def mock_requests_post():
-    with patch('auth_manager.requests.post') as mock_post:
+    with patch('verse_jan25_prj.auth_manager.requests.post') as mock_post:
         yield mock_post
 
 def test_auth_manager_initialization():

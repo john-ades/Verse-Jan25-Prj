@@ -1,8 +1,8 @@
 import pytest
 from unittest.mock import Mock
-from auth_manager import SpotifyAuthManager
-from rate_limiter import RateLimiter
-from spotify import SpotifyClient
+from verse_jan25_prj.auth_manager import SpotifyAuthManager
+from verse_jan25_prj.rate_limiter import RateLimiter
+from verse_jan25_prj.spotify import SpotifyClient
 
 
 @pytest.fixture

@@ -1,6 +1,5 @@
-import pytest
 import time
-from rate_limiter import RateLimiter
+from verse_jan25_prj.rate_limiter import RateLimiter
 
 def test_rate_limiter_allows_within_limit():
     rate_limiter = RateLimiter(max_calls=5, period=1.0)  # 5 calls per second

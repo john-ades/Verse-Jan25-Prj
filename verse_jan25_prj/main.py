@@ -5,13 +5,12 @@ import os
 from pathlib import Path
 import string
 
-# Local imports (adjust paths as needed)
-from auth_manager import SpotifyAuthManager
-from rate_limiter import RateLimiter
-from storage import CSVStorage, load_checkpoint, save_checkpoint
-from strategies.search_strategy import SearchIngestionStrategy
-from strategies.related_strategy import RelatedArtistsIngestionStrategy
-from spotify import SpotifyClient
+from verse_jan25_prj.rate_limiter import RateLimiter
+from verse_jan25_prj.auth_manager import SpotifyAuthManager
+from verse_jan25_prj.spotify import SpotifyClient
+from verse_jan25_prj.storage import CSVStorage, load_checkpoint, save_checkpoint
+from verse_jan25_prj.strategies.search_strategy import SearchIngestionStrategy
+from verse_jan25_prj.strategies.related_strategy import RelatedArtistsIngestionStrategy
 
 def float_or_int(value: str):
     """
@@ -137,6 +136,7 @@ def main():
     elapsed = time.time() - start_time
     logger.info("Run complete. Discovered %d artists.", len(strategy.visited_ids))
     logger.info("Total run time: %.2f seconds", elapsed)
+
 
 if __name__ == "__main__":
     main()

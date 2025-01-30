@@ -1,7 +1,7 @@
 import pytest
 import csv
-from storage import CSVStorage
-from models import Artist
+from verse_jan25_prj.storage import CSVStorage
+from verse_jan25_prj.models import Artist
 
 
 @pytest.fixture

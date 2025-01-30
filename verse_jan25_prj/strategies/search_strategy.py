@@ -1,7 +1,7 @@
 import logging
 from typing import Set, List
 from .base_strategy import BaseIngestionStrategy
-from models import Artist
+from verse_jan25_prj.models import Artist
 
 class SearchIngestionStrategy(BaseIngestionStrategy):
     """

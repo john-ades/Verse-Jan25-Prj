@@ -1,18 +1,18 @@
 import pytest
 from unittest.mock import patch, Mock
-from spotify import SpotifyClient
-from auth_manager import SpotifyAuthManager
-from rate_limiter import RateLimiter
+from verse_jan25_prj.spotify import SpotifyClient
+from verse_jan25_prj.auth_manager import SpotifyAuthManager
+from verse_jan25_prj.rate_limiter import RateLimiter
 
 
 @pytest.fixture
 def mock_requests_get():
-    with patch('spotify.requests.get') as mock_get:
+    with patch('verse_jan25_prj.spotify.requests.get') as mock_get:
         yield mock_get
 
 @pytest.fixture
 def mock_requests_post():
-    with patch('auth_manager.requests.post') as mock_post:
+    with patch('verse_jan25_prj.auth_manager.requests.post') as mock_post:
         yield mock_post
 
 def test_search_artists_success(mock_requests_get, mock_requests_post):

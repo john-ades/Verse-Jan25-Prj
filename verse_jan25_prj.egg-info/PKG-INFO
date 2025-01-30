@@ -1,0 +1,15 @@
+Metadata-Version: 2.2
+Name: verse-jan25-prj
+Version: 0.1.1
+Summary: Spotify Rate Limited Ingestion example
+Author: John Ades
+Author-email: john.a.ades@gmail.com
+License: MIT
+Requires-Dist: requests
+Requires-Dist: pydantic
+Requires-Dist: aiohttp
+Dynamic: author
+Dynamic: author-email
+Dynamic: license
+Dynamic: requires-dist
+Dynamic: summary

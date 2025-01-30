@@ -1,6 +1,6 @@
 # storage.py
 import csv
-from models import Artist
+from verse_jan25_prj.models import Artist
 import threading
 import json
 from pathlib import Path

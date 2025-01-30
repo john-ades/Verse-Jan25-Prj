@@ -1,7 +1,6 @@
-import pytest
 from unittest.mock import Mock
-from strategies.related_strategy import RelatedArtistsIngestionStrategy
-from models import Artist
+from verse_jan25_prj.strategies.related_strategy import RelatedArtistsIngestionStrategy
+from verse_jan25_prj.models import Artist
 
 
 
