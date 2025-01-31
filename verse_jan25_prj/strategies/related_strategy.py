@@ -19,6 +19,7 @@ class RelatedArtistsIngestionStrategy(BaseIngestionStrategy):
                 continue
 
             # Fetch the artist's details
+            print(current_artist_id)
             artist_json = self.spotify_client.get_artist(current_artist_id)
             if not artist_json or "id" not in artist_json:
                 # If there's an error or the response is empty, skip
@@ -45,7 +46,5 @@ class RelatedArtistsIngestionStrategy(BaseIngestionStrategy):
                 if rel_id and rel_id not in self.visited_ids:
                     self.to_process.append(rel_id)
 
-            # (Optional) partial checkpoint or rate-limit backoff
-            # is handled by self.spotify_client internally, so no manual sleep needed.
 
         self.logger.info("[RelatedStrategy] Finished expanding all related artists in the queue.")

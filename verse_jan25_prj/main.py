@@ -106,8 +106,7 @@ def main():
             logger.info(f"Seeding search queries with letters, digits, and special characters: {to_process}")
 
         else:
-            trending_artists = spotify_client.get_trending_artists()
-            to_process = [art["id"] for art in trending_artists]
+            to_process = spotify_client.get_seed_artists()
 
     # 5) Set up data storage
     storage = CSVStorage(filepath=args.output)
