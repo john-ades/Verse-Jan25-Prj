@@ -1,2 +1,0 @@
-[console_scripts]
-verse-jan25-prj = verse_jan25_prj.main:main
