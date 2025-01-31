@@ -19,7 +19,6 @@ class RelatedArtistsIngestionStrategy(BaseIngestionStrategy):
                 continue
 
             # Fetch the artist's details
-            print(current_artist_id)
             artist_json = self.spotify_client.get_artist(current_artist_id)
             if not artist_json or "id" not in artist_json:
                 # If there's an error or the response is empty, skip
@@ -37,6 +36,10 @@ class RelatedArtistsIngestionStrategy(BaseIngestionStrategy):
 
             # Mark as visited
             self.visited_ids.add(current_artist_id)
+            self.logger.info(
+                f"Discovered new artist: ID={artist_model.id}, "
+                f"name='{artist_model.name}', popularity={artist_model.popularity}"
+            )
 
             # Fetch related artists
             related_resp = self.spotify_client.get_related_artists(current_artist_id)
