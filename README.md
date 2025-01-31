@@ -16,7 +16,9 @@ This project showcases a **best-effort** approach to discover as many Spotify ar
 
 - **Two Ingestion Strategies**
   1. **Search Strategy**: Uses Spotify’s `/search` endpoint. Generates a wide range of queries (letters, digits, and special characters) to systematically discover new artists.
-  2. **Related Strategy**: Starts from a seed list (e.g., trending artists) and iteratively explores each artist’s related artists to uncover new IDs.
+  2. **Related Strategy (Deprecated)**: Starts from a seed list (e.g., trending artists) and iteratively explores each artist’s related artists to uncover new IDs.
+     
+     > **Note**: For *newly created* Spotify developer apps, the `get_related_artists` endpoint may not function as expected, making this strategy unreliable. It is therefore **deprecated** and not recommended for new apps.
 
 - **Rate Limiting**
   - A token bucket rate limiter that adapts to Spotify’s constraints and automatically retries on `429 (Too Many Requests)` responses.
@@ -55,7 +57,7 @@ verse/
 ├── strategies
 │   ├── base_strategy.py     # Abstract base strategy
 │   ├── search_strategy.py   # "Search" ingestion strategy
-│   └── related_strategy.py  # "Related artists" ingestion strategy
+│   └── related_strategy.py  # "Related artists" ingestion strategy (deprecated)
 ├── tests                    # Unit tests
 │   ├── test_*.py
 │   └── ...
@@ -149,7 +151,7 @@ Alternatively, if you’re working directly from this GitHub repo:
 
 - **`--strategy`**  
   - `search` (default) – uses the search queries approach.
-  - `related` – explores related artists from seeds.
+  - `related` – explores related artists from seeds (**deprecated**, see note above).
 
 - **`--output`**  
   Output CSV file for storing results. (Default: `artists.csv`)
@@ -189,10 +191,7 @@ Alternatively, if you’re working directly from this GitHub repo:
         --period 0.5
     ```
 
-    This will:
-    - Start from a seed of _trending artists_ (in this example, a placeholder method is used).
-    - Expand outward by repeatedly fetching each artist’s related artists.
-    - Use a higher rate limit (up to 10 calls every 0.5 seconds).
+    > **Important**: The *related* strategy is considered **deprecated**, especially for newer Spotify developer apps that may not support fetching related artists. If you encounter errors or empty responses, switch to the **search** strategy.
 
 If the script is interrupted, re-running the same command will resume from the checkpoint (unless you delete that file).
 
@@ -203,8 +202,10 @@ If the script is interrupted, re-running the same command will resume from the c
 1. **Ingestion Strategies**
     - **SearchIngestionStrategy**:  
       Enumerates multiple queries (a-z, 0-9, special chars) to find new artists from Spotify’s `/search` endpoint. This helps "coax" the data from the API since Spotify does not provide a single "all artists" endpoint.
-    - **RelatedArtistsIngestionStrategy**:  
-      Begins with a user-defined (or "trending") set of artists, then crawls each artist’s "related artists" to discover new IDs.
+    - **RelatedArtistsIngestionStrategy (Deprecated)**:  
+      Begins with a user-defined (or "trending") set of artists, then crawls each artist’s "related artists" to discover new IDs.  
+      
+      > **Note**: For newly registered Spotify apps, this endpoint may be restricted or unavailable, so results could be incomplete or nonexistent.
 
 2. **Rate Limiting & Resilience**
     - **Token Bucket**:  
@@ -251,7 +252,7 @@ It will discover and run all test files in the `tests/` directory.
 **Verse-Jan25-Prj** exemplifies a robust backend engineering solution for large-scale artist ingestion from Spotify. By combining:
 
 - Token-based rate limiting,
-- Multiple ingestion strategies,
+- Multiple ingestion strategies (one of which is deprecated for new apps),
 - Checkpoint-based resilience,
 - And thorough testing,
 
