@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="verse-jan25-prj",
-    version="1.1.0",
+    version="1.1.1",
     description="Spotify Rate Limited Ingestion example",
     author="John Ades",
     author_email="john.a.ades@gmail.com",
