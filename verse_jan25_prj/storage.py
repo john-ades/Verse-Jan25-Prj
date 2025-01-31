@@ -25,7 +25,7 @@ def save_checkpoint(visited_ids, to_process, checkpoint_file=Path(CHECKPOINT_FIL
         "visited_ids": list(visited_ids),
         "to_process": to_process
     }
-    with checkpoint_file.open("w") as f:
+    with open(checkpoint_file, "w") as f:
         json.dump(data, f, indent=2)
 
 
